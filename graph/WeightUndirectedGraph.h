@@ -13,8 +13,8 @@ public:
 
     void link(int i, int j, int w) override {
         edgeList.emplace_back(w, ii(i, j));
-        adjList[i].push_back(make_pair(j, w));
-        adjList[j].push_back(make_pair(i, w));
+        adjList[i].push_back(ii(w, j));
+        adjList[j].push_back(ii(w, i));
     }
 };
 

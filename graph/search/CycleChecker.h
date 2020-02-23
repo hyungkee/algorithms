@@ -38,6 +38,7 @@ private:
 public:
     CycleChecker(const UndirectedGraph &_g) : g(_g) {}
 
+    // O(V+E)
     bool checkCycle() {
         int N = g.nodeCount();
         states.assign(N, UNVISITED);

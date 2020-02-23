@@ -15,20 +15,22 @@ typedef pair<int, ii> iii;
 class WeightDirectedGraph {
 protected:
     int N;
-    vector<vector<ii>> adjList; // v, weight
+    vector<vector<ii>> adjList; // w, v
     vector<iii> edgeList; // w, v1, v2
 public:
     WeightDirectedGraph(int _N) : N(_N), adjList(_N) {}
 
     virtual void link(int i, int j, int w) {
         edgeList.emplace_back(w, ii(i, j));
-        adjList[i].push_back(make_pair(j, w));
+        adjList[i].push_back(ii(w, j));
     }
 
+    // w, j
     virtual inline const vector<ii> &adjusts(int i) const {
         return adjList[i];
     }
 
+    // w, (i, j)
     virtual inline const vector<iii> &edges() const {
         return edgeList;
     }

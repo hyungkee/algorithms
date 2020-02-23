@@ -17,7 +17,8 @@ private:
 public:
     Kruskal(const WeightUndirectedGraph &_graph) : graph(_graph) {}
 
-    int getMstCost() {
+    // O(ElogV)
+    int minCost() {
         vector<iii> edges(graph.edges());
         sort(edges.begin(), edges.end());
 
@@ -53,7 +54,7 @@ int main() {
     graph.link(2, 3, 8);
     graph.link(3, 4, 9);
 
-    cout << Kruskal(graph).getMstCost() << endl; // 18
+    cout << Kruskal(graph).minCost() << endl; // 18
     return 0;
 }
  */
