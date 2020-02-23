@@ -12,8 +12,9 @@ public:
     WeightUndirectedGraph(int _N) : WeightDirectedGraph(_N) {}
 
     void link(int i, int j, int w) override {
-        WeightDirectedGraph::link(i, j, w);
-        WeightDirectedGraph::link(j, i, w);
+        edgeList.emplace_back(w, ii(i, j));
+        adjList[i].push_back(make_pair(j, w));
+        adjList[j].push_back(make_pair(i, w));
     }
 };
 

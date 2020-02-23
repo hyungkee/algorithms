@@ -8,20 +8,27 @@
 #include <vector>
 
 using namespace std;
+typedef pair<int, int> ii;
 
 class DirectedGraph {
-private:
+protected:
     int N;
-    vector<vector<int>> adjList; // node#
+    vector<vector<int>> adjList; // v
+    vector<ii> edgeList; // v1, v2
 public:
     DirectedGraph(int _N) : N(_N), adjList(_N) {}
 
     virtual void link(int i, int j) {
+        edgeList.emplace_back(i, j);
         adjList[i].push_back(j);
     }
 
     virtual inline const vector<int> &adjusts(int i) const {
         return adjList[i];
+    }
+
+    virtual inline const vector<ii> &edges() const {
+        return edgeList;
     }
 
     virtual inline int nodeCount() const {

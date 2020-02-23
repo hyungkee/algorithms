@@ -12,8 +12,9 @@ public:
     UndirectedGraph(int _N) : DirectedGraph(_N) {}
 
     void link(int i, int j) override {
-        DirectedGraph::link(i, j);
-        DirectedGraph::link(j, i);
+        edgeList.emplace_back(i, j);
+        adjList[i].push_back(j);
+        adjList[j].push_back(i);
     }
 };
 
