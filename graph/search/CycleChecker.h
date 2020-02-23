@@ -2,10 +2,10 @@
 // Created by heuristy on 2020/02/23.
 //
 
-#ifndef CYCLE_CHECK_H
-#define CYCLE_CHECK_H
+#ifndef CYCLE_CHECKER_H
+#define CYCLE_CHECKER_H
 
-#include "UndirectedGraph.h"
+#include "../UndirectedGraph.h"
 
 class CycleChecker {
 private:
@@ -51,7 +51,7 @@ public:
     }
 };
 
-#endif //CYCLE_CHECK_H
+#endif //CYCLE_CHECKER_H
 
 /* Examples
  *
