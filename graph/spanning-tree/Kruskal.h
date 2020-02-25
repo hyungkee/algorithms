@@ -13,9 +13,9 @@ using namespace std;
 
 class Kruskal {
 private:
-    const WeightUndirectedGraph &graph;
+    WeightUndirectedGraph &graph;
 public:
-    Kruskal(const WeightUndirectedGraph &_graph) : graph(_graph) {}
+    Kruskal(WeightUndirectedGraph &_graph) : graph(_graph) {}
 
     // O(ElogV)
     int minCost() {

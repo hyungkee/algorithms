@@ -26,12 +26,12 @@ public:
     }
 
     // w, j
-    virtual inline const vector<ii> &adjusts(int i) const {
+    virtual inline vector<ii> &adjusts(int i) {
         return adjList[i];
     }
 
     // w, (i, j)
-    virtual inline const vector<iii> &edges() const {
+    virtual inline vector<iii> &edges() {
         return edgeList;
     }
 

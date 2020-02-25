@@ -14,7 +14,7 @@ private:
     };
     vector<int> states;
     vector<int> parents;
-    const UndirectedGraph &g;
+    UndirectedGraph &g;
 
     bool checkCycleFrom(int i) {
         states[i] = EXPLORED;
@@ -36,7 +36,7 @@ private:
     }
 
 public:
-    CycleChecker(const UndirectedGraph &_g) : g(_g) {}
+    CycleChecker(UndirectedGraph &_g) : g(_g) {}
 
     // O(V+E)
     bool checkCycle() {

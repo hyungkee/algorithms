@@ -23,11 +23,11 @@ public:
         adjList[i].push_back(j);
     }
 
-    virtual inline const vector<int> &adjusts(int i) const {
+    virtual inline vector<int> &adjusts(int i) {
         return adjList[i];
     }
 
-    virtual inline const vector<ii> &edges() const {
+    virtual inline vector<ii> &edges() {
         return edgeList;
     }
 

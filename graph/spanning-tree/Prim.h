@@ -11,9 +11,9 @@
 
 class Prim {
 private:
-    const WeightUndirectedGraph &graph;
+    WeightUndirectedGraph &graph;
 public:
-    Prim(const WeightUndirectedGraph &_graph) : graph(_graph) {}
+    Prim(WeightUndirectedGraph &_graph) : graph(_graph) {}
 
     // O(ElogV)
     int minCost() {
