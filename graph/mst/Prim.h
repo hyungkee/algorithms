@@ -45,7 +45,7 @@ public:
 #include <iostream>
 
 #include "graph/WeightUndirectedGraph.h"
-#include "graph/spanning-tree/Prim.h"
+#include "graph/mst/Prim.h"
 
 int main() {
     WeightUndirectedGraph graph(5);

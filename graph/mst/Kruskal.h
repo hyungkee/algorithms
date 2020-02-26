@@ -42,7 +42,7 @@ public:
 #include <iostream>
 
 #include "graph/WeightUndirectedGraph.h"
-#include "graph/spanning-tree/Kruskal.h"
+#include "graph/mst/Kruskal.h"
 
 int main() {
     WeightUndirectedGraph graph(5);
