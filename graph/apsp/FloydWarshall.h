@@ -17,12 +17,13 @@ private:
     const int N;
     vector<vector<int>> adjMat;
     vector<vector<int>> parents;
+    bool cycle = false;
+    bool negativeCycle = false;
 public:
     FloydWarshall(int _N) : N(_N), adjMat(_N) {
         for (int i = 0; i < N; i++) {
             parents[i].assign(N, i);
             adjMat[i].assign(N, INF);
-            adjMat[i][i] = 0;
         }
     }
 
@@ -40,6 +41,14 @@ public:
                         adjMat[i][j] = adjMat[i][k] + adjMat[k][j];
                         parents[i][j] = parents[k][j];
                     }
+
+        cycle = negativeCycle = false;
+        for (int i = 0; i < N; i++) {
+            if (adjMat[i][i] != INF)
+                cycle = true;
+            if (adjMat[i][i] < 0)
+                negativeCycle = true;
+        }
     }
 
     // O(1)
@@ -47,9 +56,20 @@ public:
         return adjMat[i][j];
     }
 
+    // O(N)
     void routeOfShortestPath(int i, int j, vector<int> &routeOutput) const {
         if (i != j) routeOfShortestPath(i, parents[i][j], routeOutput);
         routeOutput.push_back(j);
+    }
+
+    // O(1)
+    bool hasNegativeCycle() {
+        return negativeCycle;
+    }
+
+    // O(1)
+    bool hasCycle() {
+        return cycle;
     }
 };
 
