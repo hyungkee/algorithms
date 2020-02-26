@@ -16,9 +16,11 @@ private:
     const int INF = 1000000000; // '2 * INF < INT_MAX' to avoid overflow.
     const int N;
     vector<vector<int>> adjMat;
+    vector<vector<int>> parents;
 public:
     FloydWarshall(int _N) : N(_N), adjMat(_N) {
         for (int i = 0; i < N; i++) {
+            parents[i].assign(N, i);
             adjMat[i].assign(N, INF);
             adjMat[i][i] = 0;
         }
@@ -34,12 +36,20 @@ public:
         for (int k = 0; k < N; k++)
             for (int i = 0; i < N; i++)
                 for (int j = 0; j < N; j++)
-                    adjMat[i][j] = min(adjMat[i][j], adjMat[i][k] + adjMat[k][j]);
+                    if (adjMat[i][j] > adjMat[i][k] + adjMat[k][j]) {
+                        adjMat[i][j] = adjMat[i][k] + adjMat[k][j];
+                        parents[i][j] = parents[k][j];
+                    }
     }
 
     // O(1)
     int shortestPath(int i, int j) const {
         return adjMat[i][j];
+    }
+
+    void routeOfShortestPath(int i, int j, vector<int> &routeOutput) const {
+        if (i != j) routeOfShortestPath(i, parents[i][j], routeOutput);
+        routeOutput.push_back(j);
     }
 };
 
